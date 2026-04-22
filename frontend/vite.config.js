@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true,
-    allowedHosts: "all"
+    allowedHosts: "silentrace.84.8.250.125.sslip.io"
   }
 })
