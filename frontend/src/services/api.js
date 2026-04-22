@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:9000"
+  baseURL: "http://silentracebackend.84.8.250.125.sslip.io"
 });
 
 export const runPlugins = (data) => API.post("/run", data);
