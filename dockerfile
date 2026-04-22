@@ -21,10 +21,11 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade pip setuptools wheel
 
 WORKDIR /home/app
+
+COPY . .
+
 RUN cd frontend && npm install
 
-
-# Porta React
 EXPOSE 5173
-# Avvio
-CMD ["npm","run", "dev"]
+
+CMD ["npm", "run", "dev"]
