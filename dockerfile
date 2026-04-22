@@ -1,11 +1,30 @@
-FROM node:20-alpine AS builder
+FROM python:3.11-slim
 
-WORKDIR /app
-COPY . .
+ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /app/frontend
-RUN npm install
-RUN npm run build
+RUN apt-get update && apt-get install -y \
+    bash \
+    git \
+    curl \
+    build-essential \
+    gcc \
+    make \
+    python3-dev \
+    libffi-dev \
+    libssl-dev \
+    rustc \
+    cargo \
+    nodejs \
+    npm \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --upgrade pip setuptools wheel
+
+WORKDIR /home/app
+RUN cd frontend && npm install
 
 
+# Porta React
 EXPOSE 5173
+# Avvio
+CMD ["npm","run", "dev"]
