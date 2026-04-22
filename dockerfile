@@ -28,4 +28,5 @@ RUN cd frontend && npm install
 
 EXPOSE 5173
 
+WORKDIR /home/app/frontend
 CMD ["npm", "run", "dev"]
